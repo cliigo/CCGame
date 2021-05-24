@@ -14,7 +14,7 @@ namespace CCFrameWork.Common.Pipeline
         public void Excute();
     }
 
-    public class PipelineProgressMgr : IUpdateTask
+    public class PipelineProgressMgr : ITaskUpdate
     {
         public Queue<IPipelineProgress> _pipelines = new Queue<IPipelineProgress>();
 

@@ -23,8 +23,7 @@ namespace CCFrameWork.Common.Pipeline
         
     }
     
-
-    public class PipelineMgr<DoData> : IUpdateTask, IPoolObject
+    public class PipelineMgr<DoData> : ITaskUpdate, IPoolObject
     {
         
         public bool is_in_pool { get; set; }
@@ -35,9 +34,7 @@ namespace CCFrameWork.Common.Pipeline
 
         // 进度回调
         public Action<float> pipeline_progress_action = null;
-
         
-
         public Queue<IPipeLine<DoData>> _pipelies = new Queue<IPipeLine<DoData>>();
         public IPipeLine<DoData> _cur_pipeline;
         public float _all_cnt = 0;

@@ -3,7 +3,7 @@ using NotImplementedException = System.NotImplementedException;
 
 namespace CCFrameWork.Common.ECS
 {
-    public class Component : IPoolObject, IStartTask
+    public class Component : IPoolObject, ITaskStart
     {
         public IEntity entity { get; set; }
         

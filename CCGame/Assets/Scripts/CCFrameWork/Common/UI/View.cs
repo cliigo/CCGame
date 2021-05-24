@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using CCFrameWork.Base.Game;
 using CCFrameWork.Common.ECS;
 using CCFrameWork.Common.Pipeline;
+using CCFrameWork.Common.Pool;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,8 +12,9 @@ namespace CCFrameWork.Common.UI
 
     
 
-    public struct ViewConfig
+    public class ViewConfig : IPoolObject
     {
+
         public string name; //界面名字
         public string path;// 界面路径
 
@@ -20,7 +22,19 @@ namespace CCFrameWork.Common.UI
         public E_VIEW_LAYER view_layer; // 界面层级
 
         public View view; // 界面对象
-        
+
+
+        public void OnFetch()
+        {
+            
+        }
+
+        public void OnRecycle()
+        {
+            
+        }
+
+        public bool is_in_pool { get; set; }
     }
 
     public class LoadViewPipieline : IPipeLine<ViewConfig>

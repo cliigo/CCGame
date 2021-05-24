@@ -29,7 +29,10 @@ public class Progress : MonoBehaviour
     {
         _max_bar_width = progress_bg.rectTransform.sizeDelta.x;
         _max_bar_height = progress_bg.rectTransform.sizeDelta.y;
+        
     }
+    
+    
 
     public void InitProgress() 
     {
@@ -42,6 +45,8 @@ public class Progress : MonoBehaviour
         _txt_update_action = txt_update_action;
     }
 
+
+
     public void MoveToProgress(float progress) 
     {
         _next_progress = progress;
@@ -50,6 +55,7 @@ public class Progress : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (_cur_progress < _next_progress) 
         {
             _cur_progress += progress_speed * Time.deltaTime;

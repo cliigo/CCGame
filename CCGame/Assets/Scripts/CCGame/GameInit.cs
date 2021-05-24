@@ -16,10 +16,6 @@ public class GameInit : MonoBehaviour
     {
         GameObject.DontDestroyOnLoad(gameObject);
         Game.Init(view_root);
-
-
-        //PanelLoading.Create<PanelLoading>();
-
     }
 
     public bool Test(Action a, Action b)

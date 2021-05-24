@@ -6,9 +6,13 @@ using CCFrameWork.Common.Utils;
 
 namespace CCFrameWork.Common.ECS
 {
-    public interface IEntity : IPoolObject, ITaskSystem
+    public interface IEntity : IPoolObject, ISystemTask
     {
+       
+        // 实例id
         public int id { get; set; }
+        
+        public int group { get; set; }
 
         public bool is_vailed { get;}
 
@@ -19,31 +23,32 @@ namespace CCFrameWork.Common.ECS
 
         public void ClearAllComponent();
         public T GetComponent<T>() where T : Component;
-
         
-
     }
 
     public class Entity : IEntity
     {
         private  static IDCreator _id_creator = new IDCreator();
 
+        
         public int id { get; set; }
+        
+        public int group { get; set; }
 
         public bool is_in_pool { get; set; }
 
         public bool is_vailed
         {
-            get { return !is_in_pool; }
+            get {  return !is_in_pool; }
         }
 
         /// <summary>
         ///  任务 系统方便注册
         /// </summary>
-        public ITaskSystem task_system { get; set; }
+        public ISystemTask task_system { get; set; }
 
 
-        public Dictionary<Type, Component> _component_dict = new Dictionary<Type, Component>();
+        public  Dictionary<Type, Component> _component_dict = new Dictionary<Type, Component>();
         
         public Entity()
         {
@@ -123,7 +128,7 @@ namespace CCFrameWork.Common.ECS
             _component_dict.Clear();
         }
 
-        public bool RegisterTask(ISystemTask task)
+        public bool RegisterTask(ITask task)
         {
             if (is_vailed && task_system != null)
             {
@@ -133,7 +138,7 @@ namespace CCFrameWork.Common.ECS
             return false;
         }
 
-        public bool DisRegisterTask(ISystemTask task)
+        public bool DisRegisterTask(ITask task)
         {
             if (is_vailed && task_system != null)
             {
